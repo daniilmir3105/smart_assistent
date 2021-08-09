@@ -1,4 +1,9 @@
 import speech_recognition
+from vosk import Model, KaldiRecognizer  # offline-recogntion with Vosk
+import speech_recognition  # user speech recognition (Speech-To-Text)
+import wave  # creating and reading wav audio files
+import json  # working with json files and json strings
+import os  # working with the file system
 
 class WorkingWithVoice:
     '''
