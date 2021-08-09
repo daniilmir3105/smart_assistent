@@ -7,7 +7,7 @@ if __name__ == '__main__':
     voice_work = voice_actions.WorkingWithVoice()
 
     while True:
-        voice_input = voice_work.record_and_recognize()
+        voice_input = voice_work.record_and_recognize(microphone=micro, recognizer=recognizer)
         print(voice_input)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
