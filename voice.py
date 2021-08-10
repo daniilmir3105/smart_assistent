@@ -17,36 +17,59 @@ class VoiceAssistant:
     __speech_language = ''
     __recognition_language = ''
 
-    def setup_assistent_voice(self):
+    # setters
+    def set_name(self, string):
+        self.__name = string
+        return self.__name
+
+    def set_sex(self, string):
+        self.__sex = string
+        return self.__sex
+
+    def set_speech_language(self, string):
+        self.__speech_language = string
+        return self.__speech_language
+
+    def set_recognition_language(self, string):
+        self.__recognition_language = string
+        return self.__recognition_language
+
+    # getters
+    def get_name(self):
+        return self.__name
+
+    def setup_assistant_voice(self, speech_language, sex):
         '''
         Setting the default voice (the index may change in
         depending on the operating system settings)
-        :return:
+        :return: setup of assistant
         '''
+
 
         ttsEngine = pyttsx3.init()
         voices = ttsEngine.getProperty('voices')
 
-        if assistant.speech_language == "en":
-            assistant.recognition_language = "en-US"
-            if assistant.sex == "female":
+        if self.__recognition_language == "en":
+            self.__recognition_language = "en-US"
+            if self.__sex == "female":
                 # Microsoft Zira Desktop - English (United States)
                 ttsEngine.setProperty("voice", voices[1].id)
             else:
                 # Microsoft David Desktop - English (United States)
                 ttsEngine.setProperty("voice", voices[2].id)
         else:
-            assistant.recognition_language = "ru-RU"
+            self.__recognition_language = "ru-RU"
             # Microsoft Irina Desktop - Russian
             ttsEngine.setProperty("voice", voices[0].id)
 
-        pass
+        # pass
 
     def play_voice_assistant_speech(text_to_speech):
         """
-        Проигрывание речи ответов голосового ассистента (без сохранения аудио)
-        :param text_to_speech: текст, который нужно преобразовать в речь
+        Speech playback of voice assistant responses (without saving audio)
+        :param text_to_speech: the text to be converted to speech
         """
+
         ttsEngine = pyttsx3.init()
         ttsEngine.say(str(text_to_speech))
         ttsEngine.runAndWait()
