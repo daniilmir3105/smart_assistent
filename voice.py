@@ -19,24 +19,53 @@ class VoiceAssistant:
 
     # setters
     def set_name(self, string):
+        '''
+        This method will set name of assistant
+        :param string: this variable will be name
+        :return: __name
+        '''
         self.__name = string
         return self.__name
 
     def set_sex(self, string):
+        '''
+        This method will set sex of assistant
+        :param string: this variable will be sex
+        :return: __sex
+        '''
         self.__sex = string
         return self.__sex
 
     def set_speech_language(self, string):
+        '''
+        This method will set speech language of assistant.
+        :param string: This variable will be speech language
+        :return: __speech_language
+        '''
         self.__speech_language = string
         return self.__speech_language
 
     def set_recognition_language(self, string):
+        '''
+        This method will set recognition language of assistant.
+        :param string: This variable will be recognition language
+        :return: __recognition_language
+        '''
         self.__recognition_language = string
         return self.__recognition_language
 
     # getters
     def get_name(self):
         return self.__name
+
+    def get_sex(self):
+        return self.__sex
+
+    def get_speech_language(self):
+        return self.__speech_language
+
+    def get_recognition_language(self):
+        return self.__recognition_language
 
     def setup_assistant_voice(self, speech_language, sex):
         '''
