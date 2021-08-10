@@ -10,9 +10,17 @@ class VoiceAssistant:
     Voice assistant settings, including name, gender, language of speech
     '''
 
+    # fields
+
+    __name = ''
+    __sex = ''
+    __speech_language = ''
+    __recognition_language = ''
+
     def setup_assistent_voice(self):
         '''
         Setting the default voice (the index may change in
         depending on the operating system settings)
         :return:
         '''
+        pass
