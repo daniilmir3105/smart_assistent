@@ -24,6 +24,7 @@ class VoiceAssistant:
         :param string: this variable will be name
         :return: __name
         '''
+
         self.__name = string
         return self.__name
 
@@ -33,6 +34,7 @@ class VoiceAssistant:
         :param string: this variable will be sex
         :return: __sex
         '''
+
         self.__sex = string
         return self.__sex
 
@@ -42,6 +44,7 @@ class VoiceAssistant:
         :param string: This variable will be speech language
         :return: __speech_language
         '''
+
         self.__speech_language = string
         return self.__speech_language
 
@@ -51,31 +54,50 @@ class VoiceAssistant:
         :param string: This variable will be recognition language
         :return: __recognition_language
         '''
+
         self.__recognition_language = string
         return self.__recognition_language
 
     # getters
     def get_name(self):
+        '''
+        This method will set name of assistant
+        :return: __name
+        '''
+
         return self.__name
 
     def get_sex(self):
+        '''
+        This method will set sex of assistant
+        :return: __sex
+        '''
+
         return self.__sex
 
     def get_speech_language(self):
+        '''
+        This method will set speech language of assistant
+        :return: __speech_language
+        '''
+
         return self.__speech_language
 
     def get_recognition_language(self):
+        '''
+        This method will set recognition language of assistant
+        :return: __recognition_language
+        '''
+
         return self.__recognition_language
 
-    def setup_assistant_voice(self, speech_language, sex):
+    def setup_assistant_voice(self, ttsEngine):
         '''
         Setting the default voice (the index may change in
         depending on the operating system settings)
         :return: setup of assistant
         '''
 
-
-        ttsEngine = pyttsx3.init()
         voices = ttsEngine.getProperty('voices')
 
         if self.__recognition_language == "en":
