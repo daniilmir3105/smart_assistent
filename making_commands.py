@@ -3,7 +3,7 @@ class Making:
     This class will have methods,
     '''
 
-    def play_greetings(*args: tuple):
+    def play_greetings(self, *args: tuple):
         """
         Playing a random welcome speech.
         """
@@ -13,7 +13,7 @@ class Making:
         ]
         play_voice_assistant_speech(greetings[random.randint(0, len(greetings) - 1)])
 
-    def play_farewell_and_quit(*args: tuple):
+    def play_farewell_and_quit(self, *args: tuple):
         """
         Playing a farewell speech and leaving.
         """
@@ -25,7 +25,7 @@ class Making:
         ttsEngine.stop()
         quit()
 
-    def search_for_term_on_google(*args: tuple):
+    def search_for_term_on_google(self, *args: tuple):
         """
         Google search with automatic opening of links
         (to the list of results and to the results themselves,
@@ -63,7 +63,7 @@ class Making:
         print(search_results)
         play_voice_assistant_speech(translator.get("Here is what I found for {} on google").format(search_term))
 
-    def search_for_video_on_youtube(*args: tuple):
+    def search_for_video_on_youtube(self, *args: tuple):
         """
         Поиск видео на YouTube с автоматическим открытием ссылки на список результатов
         :param args: фраза поискового запроса
@@ -74,7 +74,7 @@ class Making:
         webbrowser.get().open(url)
         play_voice_assistant_speech(translator.get("Here is what I found for {} on youtube").format(search_term))
 
-    def search_for_definition_on_wikipedia(*args: tuple):
+    def search_for_definition_on_wikipedia(self, *args: tuple):
         """
         Поиск в Wikipedia определения с последующим озвучиванием результатов и открытием ссылок
         :param args: фраза поискового запроса
@@ -110,7 +110,7 @@ class Making:
             traceback.print_exc()
             return
 
-    def get_translation(*args: tuple):
+    def get_translation(self, *args: tuple):
         """
         Получение перевода текста с одного языка на другой (в данном случае с изучаемого на родной язык или обратно)
         :param args: фраза, которую требуется перевести
@@ -159,7 +159,7 @@ class Making:
             assistant.speech_language = old_assistant_language
             setup_assistant_voice()
 
-    def change_language(*args: tuple):
+    def change_language(self, *args: tuple):
         """
         Изменение языка голосового ассистента (языка распознавания речи)
         """
@@ -167,7 +167,7 @@ class Making:
         setup_assistant_voice()
         print(colored("Language switched to " + assistant.speech_language, "cyan"))
 
-    def get_weather_forecast(*args: tuple):
+    def get_weather_forecast(self, *args: tuple):
         """
         Получение и озвучивание прогнза погоды
         :param args: город, по которому должен выполняться запос
