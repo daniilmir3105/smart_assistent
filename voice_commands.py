@@ -15,15 +15,15 @@ class bot_commands:
     ("weather", "forecast", "погода", "прогноз"): get_weather_forecast,
     }
 
-    def execute_command_with_name(command_name: str, *args: list):
+    def execute_command_with_name(self, command_name: str, *args: list):
         """
         Выполнение заданной пользователем команды с дополнительными аргументами
         :param command_name: the name of the commnd
         :param args: arguments, that will be used in our method
         :return:
         """
-        for key in commands.keys():
+        for key in self.__commands.keys():
             if command_name in key:
-                commands[key](*args)
+                self.__commands[key](*args)
             else:
                 pass  # print("Command not found")
