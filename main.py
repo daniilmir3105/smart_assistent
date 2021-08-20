@@ -3,9 +3,11 @@ import voice
 import speech_recognition
 import voice_actions
 import pyttsx3
+import voice_commands
 
 if __name__ == '__main__':
 
+    commands = voice_commands.BotCommands()
     recognizer = speech_recognition.Recognizer()
     micro = speech_recognition.Microphone()
     voice_work = voice_actions.WorkingWithVoice()
@@ -32,6 +34,8 @@ if __name__ == '__main__':
         # отделение комманд от дополнительной информации (аргументов)
         voice_input = voice_input.split(" ")
         command = voice_input[0]
+        command_options = [str(input_part) for input_part in voice_input[1:len(voice_input)]]
+        commands.execute_command_with_name(command, command_options)
 
         if command == "привет":
             assistent.play_voice_assistant_speech("Здравствуй")

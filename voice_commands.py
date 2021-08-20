@@ -1,6 +1,6 @@
 import making_commands
 
-class bot_commands:
+class BotCommands:
     '''
     This class will have field for our voice-commands
     and method for processing.
