@@ -61,7 +61,7 @@ class VoiceAssistant:
     # getters
     def get_name(self):
         '''
-        This method will set name of assistant
+        This method will get name of assistant
         :return: __name
         '''
 
@@ -69,7 +69,7 @@ class VoiceAssistant:
 
     def get_sex(self):
         '''
-        This method will set sex of assistant
+        This method will get sex of assistant
         :return: __sex
         '''
 
@@ -77,7 +77,7 @@ class VoiceAssistant:
 
     def get_speech_language(self):
         '''
-        This method will set speech language of assistant
+        This method will get speech language of assistant
         :return: __speech_language
         '''
 
@@ -85,7 +85,7 @@ class VoiceAssistant:
 
     def get_recognition_language(self):
         '''
-        This method will set recognition language of assistant
+        This method will get recognition language of assistant
         :return: __recognition_language
         '''
 
