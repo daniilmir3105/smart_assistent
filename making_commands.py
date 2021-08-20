@@ -1,19 +1,27 @@
+import voice
+import random
+import pyttsx3
+import webbrowser
+from googlesearch import search
+
 class Making:
     '''
     This class will have methods,
     '''
 
-    def play_greetings(self, *args: tuple):
+    __speaking = voice.VoiceAssistant()
+
+    def play_greetings(self, translator, person, *args: tuple):
         """
         Playing a random welcome speech.
         """
         greetings = [
-            translator.get("Hello, {}! How can I help you today?").format(person.name),
-            translator.get("Good day to you {}! How can I help you today?").format(person.name)
+            translator.get("Hello, {}! How can I help you today?").format(person.get_name()),
+            translator.get("Good day to you {}! How can I help you today?").format(person.get_name())
         ]
-        play_voice_assistant_speech(greetings[random.randint(0, len(greetings) - 1)])
+        self.__speaking.play_voice_assistant_speech(greetings[random.randint(0, len(greetings) - 1)])
 
-    def play_farewell_and_quit(self, *args: tuple):
+    def play_farewell_and_quit(self, translator, person, *args: tuple):
         """
         Playing a farewell speech and leaving.
         """
@@ -21,7 +29,8 @@ class Making:
             translator.get("Goodbye, {}! Have a nice day!").format(person.name),
             translator.get("See you soon, {}!").format(person.name)
         ]
-        play_voice_assistant_speech(farewells[random.randint(0, len(farewells) - 1)])
+        self.__speaking.play_voice_assistant_speech(farewells[random.randint(0, len(farewells) - 1)])
+        ttsEngine = pyttsx3.init()
         ttsEngine.stop()
         quit()
 
