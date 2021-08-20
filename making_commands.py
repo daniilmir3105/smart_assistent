@@ -3,6 +3,7 @@ import random
 import pyttsx3
 import webbrowser
 from googlesearch import search
+import traceback
 
 class Making:
     '''
@@ -34,7 +35,7 @@ class Making:
         ttsEngine.stop()
         quit()
 
-    def search_for_term_on_google(self, *args: tuple):
+    def search_for_term_on_google(self, translator, assistant,*args: tuple):
         """
         Google search with automatic opening of links
         (to the list of results and to the results themselves,
@@ -53,7 +54,7 @@ class Making:
         try:
             for _ in search(search_term,  # что искать
                             tld="com",  # верхнеуровневый домен
-                            lang=assistant.speech_language,  # используется язык, на котором говорит ассистент
+                            lang=assistant.get_speech_language(),  # используется язык, на котором говорит ассистент
                             num=1,  # количество результатов на странице
                             start=0,  # индекс первого извлекаемого результата
                             stop=1,
@@ -65,14 +66,14 @@ class Making:
 
         # поскольку все ошибки предсказать сложно, то будет произведен отлов с последующим выводом без остановки программы
         except:
-            play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
+            self.__speaking.play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
             traceback.print_exc()
             return
 
         print(search_results)
-        play_voice_assistant_speech(translator.get("Here is what I found for {} on google").format(search_term))
+        self.__speaking.play_voice_assistant_speech(translator.get("Here is what I found for {} on google").format(search_term))
 
-    def search_for_video_on_youtube(self, *args: tuple):
+    def search_for_video_on_youtube(self, translator, *args: tuple):
         """
         Поиск видео на YouTube с автоматическим открытием ссылки на список результатов
         :param args: фраза поискового запроса
@@ -81,7 +82,7 @@ class Making:
         search_term = " ".join(args[0])
         url = "https://www.youtube.com/results?search_query=" + search_term
         webbrowser.get().open(url)
-        play_voice_assistant_speech(translator.get("Here is what I found for {} on youtube").format(search_term))
+        self.__speaking.play_voice_assistant_speech(translator.get("Here is what I found for {} on youtube").format(search_term))
 
     def search_for_definition_on_wikipedia(self, *args: tuple):
         """
