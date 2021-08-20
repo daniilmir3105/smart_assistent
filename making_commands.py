@@ -4,6 +4,7 @@ import pyttsx3
 import webbrowser
 from googlesearch import search
 import traceback
+import wikipediaapi
 
 class Making:
     '''
@@ -84,7 +85,7 @@ class Making:
         webbrowser.get().open(url)
         self.__speaking.play_voice_assistant_speech(translator.get("Here is what I found for {} on youtube").format(search_term))
 
-    def search_for_definition_on_wikipedia(self, *args: tuple):
+    def search_for_definition_on_wikipedia(self, translator, assistant, *args: tuple):
         """
         Поиск в Wikipedia определения с последующим озвучиванием результатов и открытием ссылок
         :param args: фраза поискового запроса
@@ -100,23 +101,23 @@ class Making:
         wiki_page = wiki.page(search_term)
         try:
             if wiki_page.exists():
-                play_voice_assistant_speech(
+                self.__speaking.play_voice_assistant_speech(
                     translator.get("Here is what I found for {} on Wikipedia").format(search_term))
                 webbrowser.get().open(wiki_page.fullurl)
 
                 # чтение ассистентом первых двух предложений summary со страницы Wikipedia
                 # (могут быть проблемы с мультиязычностью)
-                play_voice_assistant_speech(wiki_page.summary.split(".")[:2])
+                self.__speaking.play_voice_assistant_speech(wiki_page.summary.split(".")[:2])
             else:
                 # открытие ссылки на поисковик в браузере в случае, если на Wikipedia не удалось найти ничего по запросу
-                play_voice_assistant_speech(translator.get(
+                self.__speaking.play_voice_assistant_speech(translator.get(
                     "Can't find {} on Wikipedia. But here is what I found on google").format(search_term))
                 url = "https://google.com/search?q=" + search_term
                 webbrowser.get().open(url)
 
         # поскольку все ошибки предсказать сложно, то будет произведен отлов с последующим выводом без остановки программы
         except:
-            play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
+            self.__speaking.play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
             traceback.print_exc()
             return
 
