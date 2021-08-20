@@ -6,6 +6,7 @@ from googlesearch import search
 import traceback
 import wikipediaapi
 import googletrans
+from termcolor import colored
 
 class Making:
     '''
@@ -171,12 +172,12 @@ class Making:
             assistant.speech_language = old_assistant_language
             self.__speaking.setup_assistant_voice()
 
-    def change_language(self, *args: tuple):
+    def change_language(self, assistant, *args: tuple):
         """
         Изменение языка голосового ассистента (языка распознавания речи)
         """
         assistant.speech_language = "ru" if assistant.speech_language == "en" else "en"
-        setup_assistant_voice()
+        self.__speaking.setup_assistant_voice()
         print(colored("Language switched to " + assistant.speech_language, "cyan"))
 
     def get_weather_forecast(self, *args: tuple):
