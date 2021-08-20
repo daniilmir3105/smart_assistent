@@ -5,6 +5,7 @@ import webbrowser
 from googlesearch import search
 import traceback
 import wikipediaapi
+import googletrans
 
 class Making:
     '''
@@ -121,7 +122,7 @@ class Making:
             traceback.print_exc()
             return
 
-    def get_translation(self, *args: tuple):
+    def get_translation(self, assistant, person, translator, *args: tuple):
         """
         Получение перевода текста с одного языка на другой (в данном случае с изучаемого на родной язык или обратно)
         :param args: фраза, которую требуется перевести
@@ -140,35 +141,35 @@ class Making:
                                                                  src=person.target_language,  # с какого языка
                                                                  dest=person.native_language)  # на какой язык
 
-                play_voice_assistant_speech("The translation for {} in Russian is".format(search_term))
+                self.__speaking.play_voice_assistant_speech("The translation for {} in Russian is".format(search_term))
 
                 # смена голоса ассистента на родной язык пользователя (чтобы можно было произнести перевод)
                 assistant.speech_language = person.native_language
-                setup_assistant_voice()
+                self.__speaking.setup_assistant_voice()
 
             # если язык речи ассистента и родной язык пользователя одинаковы, то перевод выполяется на изучаемый язык
             else:
                 translation_result = google_translator.translate(search_term,  # что перевести
                                                                  src=person.native_language,  # с какого языка
                                                                  dest=person.target_language)  # на какой язык
-                play_voice_assistant_speech("По-английски {} будет как".format(search_term))
+                self.__speaking.play_voice_assistant_speech("По-английски {} будет как".format(search_term))
 
                 # смена голоса ассистента на изучаемый язык пользователя (чтобы можно было произнести перевод)
                 assistant.speech_language = person.target_language
-                setup_assistant_voice()
+                self.__speaking.setup_assistant_voice()
 
             # произнесение перевода
-            play_voice_assistant_speech(translation_result.text)
+            self.__speaking.play_voice_assistant_speech(translation_result.text)
 
         # поскольку все ошибки предсказать сложно, то будет произведен отлов с последующим выводом без остановки программы
         except:
-            play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
+            self.__speaking.play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
             traceback.print_exc()
 
         finally:
             # возвращение преждних настроек голоса помощника
             assistant.speech_language = old_assistant_language
-            setup_assistant_voice()
+            self.__speaking.setup_assistant_voice()
 
     def change_language(self, *args: tuple):
         """
