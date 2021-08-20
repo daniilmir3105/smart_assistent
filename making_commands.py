@@ -7,6 +7,8 @@ import traceback
 import wikipediaapi
 import googletrans
 from termcolor import colored
+from pyowm import OWM
+import os
 
 class Making:
     '''
@@ -180,7 +182,7 @@ class Making:
         self.__speaking.setup_assistant_voice()
         print(colored("Language switched to " + assistant.speech_language, "cyan"))
 
-    def get_weather_forecast(self, *args: tuple):
+    def get_weather_forecast(self, person, translator, *args: tuple):
         """
         Получение и озвучивание прогнза погоды
         :param args: город, по которому должен выполняться запос
@@ -204,7 +206,7 @@ class Making:
 
         # поскольку все ошибки предсказать сложно, то будет произведен отлов с последующим выводом без остановки программы
         except:
-            play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
+            self.__speaking.play_voice_assistant_speech(translator.get("Seems like we have a trouble. See logs for more information"))
             traceback.print_exc()
             return
 
@@ -222,7 +224,7 @@ class Making:
                       "\n * Pressure (mm Hg): " + str(pressure), "yellow"))
 
         # озвучивание текущего состояния погоды ассистентом (здесь для мультиязычности требуется дополнительная работа)
-        play_voice_assistant_speech(translator.get("It is {0} in {1}").format(status, city_name))
-        play_voice_assistant_speech(translator.get("The temperature is {} degrees Celsius").format(str(temperature)))
-        play_voice_assistant_speech(translator.get("The wind speed is {} meters per second").format(str(wind_speed)))
-        play_voice_assistant_speech(translator.get("The pressure is {} mm Hg").format(str(pressure)))
+        self.__speaking.play_voice_assistant_speech(translator.get("It is {0} in {1}").format(status, city_name))
+        self.__speaking.play_voice_assistant_speech(translator.get("The temperature is {} degrees Celsius").format(str(temperature)))
+        self.__speaking.play_voice_assistant_speech(translator.get("The wind speed is {} meters per second").format(str(wind_speed)))
+        self.__speaking.play_voice_assistant_speech(translator.get("The pressure is {} mm Hg").format(str(pressure)))
