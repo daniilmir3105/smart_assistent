@@ -5,32 +5,15 @@ import voice_actions
 import pyttsx3
 import voice_commands
 import person
+import objects
 
 if __name__ == '__main__':
-
+    object1 = objects.Object()
     commands = voice_commands.BotCommands()
     recognizer = speech_recognition.Recognizer()
     micro = speech_recognition.Microphone()
     voice_work = voice_actions.WorkingWithVoice()
-
-    # initializing the speech synthesis tool
-    ttsEngine = pyttsx3.init()
-
-    # # set parametrs of our assistent
-    # assistent = voice.VoiceAssistant()
-    # assistent.set_name('Alice')
-    # assistent.set_sex('female')
-    # assistent.set_speech_language('ru')
-
-    # настройка данных пользователя
-    # person = person.OwnerPerson()
-    # person.name = "Tanya"
-    # person.home_city = "Yekaterinburg"
-    # person.native_language = "ru"
-    # person.target_language = "en"
-
-    # # setting the default voice
-    # assistent.setup_assistant_voice(ttsEngine=ttsEngine)
+    assistant = object1.get_assistent()
 
     while True:
         # start of speech recording with subsequent output of recognized speech
@@ -46,6 +29,6 @@ if __name__ == '__main__':
         commands.execute_command_with_name(command, command_options)
 
         if command == "привет":
-            assistent.play_voice_assistant_speech("Здравствуй")
+            assistant.play_voice_assistant_speech("Здравствуй")
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
