@@ -40,7 +40,7 @@ class Making:
         ttsEngine.stop()
         quit()
 
-    def search_for_term_on_google(self, translator, assistant,*args: tuple):
+    def search_for_term_on_google(self, translator, assistant, *args: tuple):
         """
         Google search with automatic opening of links
         (to the list of results and to the results themselves,

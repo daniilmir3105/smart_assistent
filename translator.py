@@ -6,10 +6,13 @@ class Translation:
     Getting a string translation embedded in the application to create
     a multilingual assistant
     """
+
+    __assistant =
+
     with open("translations.json", "r", encoding="UTF-8") as file:
         translations = json.load(file)
 
-    def get(self, assistant, text: str):
+    def get(self, assistant=__assistant, text: str):
         """
         Getting a line feed from a file into the desired language (by its code)
         :param text: the text to be translated

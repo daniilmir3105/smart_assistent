@@ -1,4 +1,6 @@
 import making_commands
+import person
+import translator
 
 class BotCommands:
     '''
@@ -7,10 +9,12 @@ class BotCommands:
     '''
 
     __maker = making_commands.Making()
+    __translator = translator.Translation()
+    __person = person.OwnerPerson()
 
     __commands = {
-    ("hello", "hi", "morning", "привет"): __maker.play_greetings(),
-    ("bye", "goodbye", "quit", "exit", "stop", "пока"): __maker.play_farewell_and_quit(),
+    ("hello", "hi", "morning", "привет"): __maker.play_greetings(translator=__translator, person=__person),
+    ("bye", "goodbye", "quit", "exit", "stop", "пока"): __maker.play_farewell_and_quit(translator=__translator, person=__person),
     ("search", "google", "find", "найди"): __maker.search_for_term_on_google(),
     ("video", "youtube", "watch", "видео"): __maker.search_for_video_on_youtube(),
     ("wikipedia", "definition", "about", "определение", "википедия"): __maker.search_for_definition_on_wikipedia(),
