@@ -16,11 +16,11 @@ if __name__ == '__main__':
     # initializing the speech synthesis tool
     ttsEngine = pyttsx3.init()
 
-    # set parametrs of our assistent
-    assistent = voice.VoiceAssistant()
-    assistent.set_name('Alice')
-    assistent.set_sex('female')
-    assistent.set_speech_language('ru')
+    # # set parametrs of our assistent
+    # assistent = voice.VoiceAssistant()
+    # assistent.set_name('Alice')
+    # assistent.set_sex('female')
+    # assistent.set_speech_language('ru')
 
     # настройка данных пользователя
     # person = person.OwnerPerson()
@@ -29,8 +29,8 @@ if __name__ == '__main__':
     # person.native_language = "ru"
     # person.target_language = "en"
 
-    # setting the default voice
-    assistent.setup_assistant_voice(ttsEngine=ttsEngine)
+    # # setting the default voice
+    # assistent.setup_assistant_voice(ttsEngine=ttsEngine)
 
     while True:
         # start of speech recording with subsequent output of recognized speech

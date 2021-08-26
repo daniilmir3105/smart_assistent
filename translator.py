@@ -1,5 +1,6 @@
 from termcolor import colored
 import json
+from objects import assistent
 
 class Translation:
     """
@@ -7,7 +8,7 @@ class Translation:
     a multilingual assistant
     """
 
-    __assistant =
+    __assistant = assistent
 
     with open("translations.json", "r", encoding="UTF-8") as file:
         translations = json.load(file)
