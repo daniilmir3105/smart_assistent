@@ -12,7 +12,7 @@ class Translation:
     object1 = objects.Object()
     __assistant = object1.get_assistent()
 
-    with open("translations.json", "r", encoding="UTF-8") as file:
+    with open("package.json", "r", encoding="UTF-8") as file:
         translations = json.load(file)
 
     def get(self, text: str):
@@ -22,7 +22,7 @@ class Translation:
         :return: text translation embedded in the application
         """
         if text in self.translations:
-            return self.translations[text][self.__assistant.speech_language]
+            return self.translations[text][self.__assistant.get_speech_language()]
         else:
             # if there is no translation, a message about this is displayed in
             # the logs and the source text is returned
