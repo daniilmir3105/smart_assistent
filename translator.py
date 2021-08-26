@@ -9,7 +9,7 @@ class Translation:
     with open("translations.json", "r", encoding="UTF-8") as file:
         translations = json.load(file)
 
-    def get(self, text: str):
+    def get(self, assistant, text: str):
         """
         Getting a line feed from a file into the desired language (by its code)
         :param text: the text to be translated
