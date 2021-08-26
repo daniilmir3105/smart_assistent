@@ -23,11 +23,11 @@ if __name__ == '__main__':
     assistent.set_speech_language('ru')
 
     # настройка данных пользователя
-    person = person.OwnerPerson()
-    person.name = "Tanya"
-    person.home_city = "Yekaterinburg"
-    person.native_language = "ru"
-    person.target_language = "en"
+    # person = person.OwnerPerson()
+    # person.name = "Tanya"
+    # person.home_city = "Yekaterinburg"
+    # person.native_language = "ru"
+    # person.target_language = "en"
 
     # setting the default voice
     assistent.setup_assistant_voice(ttsEngine=ttsEngine)

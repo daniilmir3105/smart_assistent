@@ -1,5 +1,6 @@
-import making_commands
-import person
+# import making_commands
+# import person
+import 
 import translator
 
 class BotCommands:
@@ -8,9 +9,9 @@ class BotCommands:
     and method for processing.
     '''
 
-    __maker = making_commands.Making()
+    __maker =
     __translator = translator.Translation()
-    __person = person.OwnerPerson()
+    __person =
 
     __commands = {
     ("hello", "hi", "morning", "привет"): __maker.play_greetings(translator=__translator, person=__person),
