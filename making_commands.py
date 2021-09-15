@@ -35,8 +35,8 @@ class Making:
         Playing a farewell speech and leaving.
         """
         farewells = [
-            translator.get("Goodbye, {}! Have a nice day!").format(person.name),
-            translator.get("See you soon, {}!").format(person.name)
+            translator.get("Goodbye, {}! Have a nice day!").format(person.get_name()),
+            translator.get("See you soon, {}!").format(person.get_name())
         ]
         self.__speaking.play_voice_assistant_speech(farewells[random.randint(0, len(farewells) - 1)])
         ttsEngine = pyttsx3.init()

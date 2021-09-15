@@ -10,8 +10,8 @@ class Object:
 
     # configuring user data
     __person = person.OwnerPerson()
-    __person.set_name("Tanya")
-    __person.set_home_city("Yekaterinburg")
+    __person.set_name("Daniil")
+    __person.set_home_city("Saint Petersburg")
     __person.set_native_language("ru")
     __person.set_target_language("en")
 
