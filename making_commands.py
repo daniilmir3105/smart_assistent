@@ -25,7 +25,10 @@ class Making:
             translator.get("Hello, {}! How can I help you today?").format(person.get_name()),
             translator.get("Good day to you {}! How can I help you today?").format(person.get_name())
         ]
-        self.__speaking.play_voice_assistant_speech(greetings[random.randint(0, len(greetings) - 1)])
+        # result = greetings[random.randint(0, len(greetings) - 1)]
+        result = greetings[0]
+
+        self.__speaking.play_voice_assistant_speech(text_to_speech=result)
 
     def play_farewell_and_quit(self, translator, person, *args: tuple):
         """
