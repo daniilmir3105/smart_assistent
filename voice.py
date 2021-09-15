@@ -115,7 +115,7 @@ class VoiceAssistant:
 
         # pass
 
-    def play_voice_assistant_speech(text_to_speech):
+    def play_voice_assistant_speech(self, text_to_speech):
         """
         Speech playback of voice assistant responses (without saving audio)
         :param text_to_speech: the text to be converted to speech

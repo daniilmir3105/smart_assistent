@@ -14,7 +14,7 @@ class BotCommands:
     object1 = objects.Object()
     __maker = making_commands.Making()
     __translator = translator.Translation()
-    __person = object1.det_person()
+    __person = object1.get_person()
     __assistent = object1.get_assistent()
 
     __commands = {

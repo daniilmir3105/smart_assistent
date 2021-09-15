@@ -27,7 +27,7 @@ class Object:
     # setting the default voice
     __assistant.setup_assistant_voice(ttsEngine=ttsEngine)
 
-    def det_person(self):
+    def get_person(self):
         '''
         This method will return object(person)
         :return: object person
