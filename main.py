@@ -4,12 +4,13 @@ import speech_recognition
 import voice_actions
 import pyttsx3
 import voice_commands
+from termcolor import colored
 import person
 import objects
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
-from verification.preprocessing import prepare_corpus
+# from verification.preprocessing import prepare_corpus
 
 if __name__ == '__main__':
     object1 = objects.Object()
@@ -24,16 +25,19 @@ if __name__ == '__main__':
     vectorizer = TfidfVectorizer(analyzer="char", ngram_range=(2, 3))
     classifier_probability = LogisticRegression()
     classifier = LinearSVC()
-    prepare_corpus()
+    # prepare_corpus()
 
     while True:
         # start of speech recording with subsequent output of recognized speech
         # and deleting the audio recorded in the microphone
         voice_input = voice_work.record_and_recognize(microphone=micro, recognizer=recognizer)
-        os.remove('microphone-results.wav')
-        print(voice_input)
 
-        # отделение комманд от дополнительной информации (аргументов)
+        if os.path.exists("microphone-results.wav"):
+            os.remove("microphone-results.wav")
+
+        print(colored(voice_input, "blue"))
+
+        # separating commands from additional information (arguments)
         voice_input = voice_input.split(" ")
         command = voice_input[0]
         command_options = [str(input_part) for input_part in voice_input[1:len(voice_input)]]
