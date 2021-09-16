@@ -6,6 +6,10 @@ import pyttsx3
 import voice_commands
 import person
 import objects
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import LinearSVC
+from verification.preprocessing import prepare_corpus
 
 if __name__ == '__main__':
     object1 = objects.Object()
@@ -14,6 +18,13 @@ if __name__ == '__main__':
     micro = speech_recognition.Microphone()
     voice_work = voice_actions.WorkingWithVoice()
     assistant = object1.get_assistent()
+
+    # preparing the corpus for recognizing user requests with some probability
+    # (search for similar ones)
+    vectorizer = TfidfVectorizer(analyzer="char", ngram_range=(2, 3))
+    classifier_probability = LogisticRegression()
+    classifier = LinearSVC()
+    prepare_corpus()
 
     while True:
         # start of speech recording with subsequent output of recognized speech
